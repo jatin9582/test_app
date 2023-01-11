@@ -1,13 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_appcenter_bundle/flutter_appcenter_bundle.dart';
+import 'package:app_center_plugin/app_center_plugin.dart';
+// import 'package:flutter_appcenter_bundle/flutter_appcenter_bundle.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await AppCenter.startAsync(
-    appSecretAndroid: '326287de-3d19-4230-bf7f-1945aca81448',
-    appSecretIOS: '',
-    enableDistribute: false,
-  );
+  final secret = Platform.isAndroid ? "326287de-3d19-4230-bf7f-1945aca81448" : "";
+  await AppCenter.start(secret);
+  // await AppCenter.startAsync(
+  //   appSecretAndroid: '326287de-3d19-4230-bf7f-1945aca81448',
+  //   appSecretIOS: '',
+  //   enableDistribute: false,
+  // );
   runApp(const MyApp());
 }
 
@@ -65,6 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      AppCenter.trackEvent(
+          'Increment Counter', {'counter': _counter.toString()});
     });
   }
 
@@ -73,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    AppCenter.trackEventAsync('_MyAppState.initState');
+    // AppCenter.trackEventAsync('_MyAppState.initState');
   }
 
   @override
