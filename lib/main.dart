@@ -80,7 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    // AppCenter.trackEventAsync('_MyAppState.initState');
+    AppCenter.trackEvent(
+        'first page');
   }
 
   @override
