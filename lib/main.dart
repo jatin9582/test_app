@@ -6,7 +6,9 @@ import 'package:app_center_plugin/app_center_plugin.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  final secret = Platform.isAndroid ? "326287de-3d19-4230-bf7f-1945aca81448" : "";
+  final secret = Platform.isAndroid
+      ? "326287de-3d19-4230-bf7f-1945aca81448"
+      : "005f5980-3ba3-4a55-81d7-89ab5a8f921a";
   await AppCenter.start(secret);
   // await AppCenter.startAsync(
   //   appSecretAndroid: '326287de-3d19-4230-bf7f-1945aca81448',
